@@ -34,7 +34,7 @@ type Props = RectButtonProps & {
 export function Appointment( {data, ...rest} : Props ){     
     const [category] = categories.filter(item => item.id === data.category); 
     const  { owner } = data.guild;
-    const  { primary,on }  = theme.colors;
+    const  { primary, on }  = theme.colors;
 
      return (        
         <RectButton
@@ -56,20 +56,21 @@ export function Appointment( {data, ...rest} : Props ){
                    
                    <View style={styles.footer}>
                        <View style={styles.dateInfo}>
-                            <CalendarSvg fill={ owner? primary : on } />
+                            <CalendarSvg fill={ owner ? on : primary  } />
 
                             <Text style={styles.date}>
                                 { data.date }
+                                
                             </Text>
                        </View>
                    
                    
                         <View style={styles.playersInfo}>
-                                <PlayerSvg fill={ owner ? primary : on  } />
+                                <PlayerSvg fill={ owner ? on : primary  } />
                         
                                 <Text style={[ 
                                     styles.player,
-                                    { color: owner ? primary : on }
+                                    { color: owner ? on : primary }
                                 ]}>
                                     { owner? 'Anfitrião': 'Visitante'}
 
