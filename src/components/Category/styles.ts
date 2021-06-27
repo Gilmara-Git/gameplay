@@ -13,8 +13,7 @@ export const styles = StyleSheet.create({
     },
     content:{
         width: 100,
-        height: 116,
-        backgroundColor: theme.colors.secondary40, 
+        height: 116,        
         borderRadius: 8,
         alignItems: 'center',
         justifyContent:'space-between',
