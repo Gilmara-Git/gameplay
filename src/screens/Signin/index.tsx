@@ -11,6 +11,7 @@ import { useNavigation } from '@react-navigation/native';
 
 import IllustrationImg from "../../assets/illustration.png";
 import { ButtonIcon } from '../../components/ButtonIcon';
+import { Background } from '../../components/Background';
 
 export function SignIn() {
 
@@ -21,29 +22,30 @@ export function SignIn() {
     }
 
     return (
-        <View style={styles.container}>           
-            <Image source={IllustrationImg}
-                style={styles.image}
-                resizeMode="stretch" />
+        <Background>
+            <View style={styles.container}>           
+                <Image source={IllustrationImg}
+                    style={styles.image}
+                    resizeMode="stretch" />
 
-            <View style={styles.content}>
-                <Text style={styles.title}>
-                    Conecte-se {'\n'}
-                    e organize suas {'\n'}
-                    jogatinas
-                </Text>
+                <View style={styles.content}>
+                    <Text style={styles.title}>
+                        Conecte-se {'\n'}
+                        e organize suas {'\n'}
+                        jogatinas
+                    </Text>
 
-                <Text style={styles.subtitle}>
-                    Crie grupos para jogar seus games {'\n'}
-                    com seu amigos
-                </Text>
+                    <Text style={styles.subtitle}>
+                        Crie grupos para jogar seus games {'\n'}
+                        com seu amigos
+                    </Text>
 
-                <ButtonIcon 
-                title='Entrar com Discord'                
-                onPress={handleSign}
-                />    
+                    <ButtonIcon 
+                    title='Entrar com Discord'                
+                    onPress={handleSign}
+                    />    
+                </View>
             </View>
-        </View>
-
+        </Background>
     );
 }
