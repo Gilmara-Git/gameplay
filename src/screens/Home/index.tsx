@@ -49,14 +49,23 @@ export function Home(){
     }
 
     function handleAppointmentDetails(){
+        console.log("App Details")
         navigation.navigate('AppointmentDetails');
+    }
+
+    function handleAppointmentCreate(){
+        console.log("App Create")
+        navigation.navigate('AppointmentCreate');
     }
 
     return (
         <Background>
             <View style={styles.header}>
                 <Profile/>
-                <ButtonAdd />
+                
+                <ButtonAdd
+                     onPress={handleAppointmentCreate} 
+                />
             </View>
 
                 <CategorySelect
@@ -76,7 +85,7 @@ export function Home(){
                         keyExtractor={ item => item.id}
                         renderItem={({ item }) => (
                         <Appointment data={ item }
-                        onPress={handleAppointmentDetails}
+                            onPress={handleAppointmentDetails}
                          />
                         )}
                         ItemSeparatorComponent={ ()=> <ListDivider />}
