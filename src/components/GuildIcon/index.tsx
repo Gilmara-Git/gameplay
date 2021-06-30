@@ -1,6 +1,5 @@
 import React from 'react';
-import { View, Image } from 'react-native';
-import { RectButton, RectButtonProps } from 'react-native-gesture-handler';
+import { Image } from 'react-native';
 
 import { styles } from './styles'
 
