@@ -1,5 +1,4 @@
 import  { StyleSheet } from 'react-native';
-import { theme } from '../../global/styles/theme';
 
 export const styles = StyleSheet.create({
     image: {
@@ -7,7 +6,7 @@ export const styles = StyleSheet.create({
         height: 64,
         borderRadius: 8,
         marginRight: 20
-               
+          
     },
     
 })
