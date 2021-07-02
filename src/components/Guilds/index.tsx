@@ -36,7 +36,32 @@ export function Guilds({ handleGuildSelect }: Props){
             name: 'xctiva',
             icon: 'image.png',
             owner: true
+        },
+        {
+            id: '5', 
+            name: 'xctiva',
+            icon: 'image.png',
+            owner: true
+        },
+        {
+            id: '7', 
+            name: 'xctiva',
+            icon: 'image.png',
+            owner: true
+        },
+        {
+            id: '8', 
+            name: 'xctiva',
+            icon: 'image.png',
+            owner: true
+        },
+        {
+            id: '9', 
+            name: 'xctiva',
+            icon: 'image.png',
+            owner: true
         }
+
 ];
 
     return(
@@ -52,6 +77,7 @@ export function Guilds({ handleGuildSelect }: Props){
                     )} 
                     showsVerticalScrollIndicator={false} 
                     ItemSeparatorComponent={ () => <ListDivider />}
+                    contentContainerStyle={{ paddingBottom: 68, paddingTop: 103 }}
                     style={styles.guilds}             
                 />
 
