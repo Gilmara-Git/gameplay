@@ -49,8 +49,8 @@ export function AppointmentCreate(){
             style={styles.container}
           
         >
+        <Background>
             <ScrollView>
-                <Background>
                         <Header
                             title="Agendar Partida"               
                         /> 
@@ -155,8 +155,8 @@ export function AppointmentCreate(){
                             </View>
                                 
                         </View>           
-                </Background>
             </ScrollView>
+        </Background>
 
             <ModalView 
                 visible={openGuildsModal}
