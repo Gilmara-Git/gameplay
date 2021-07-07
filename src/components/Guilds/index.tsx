@@ -30,36 +30,6 @@ export function Guilds({ handleGuildSelect }: Props){
             name: 'Canários',
             icon: 'image.png',
             owner: false
-        },
-        {
-            id: '4', 
-            name: 'xctiva',
-            icon: 'image.png',
-            owner: true
-        },
-        {
-            id: '5', 
-            name: 'xctiva',
-            icon: 'image.png',
-            owner: true
-        },
-        {
-            id: '7', 
-            name: 'xctiva',
-            icon: 'image.png',
-            owner: true
-        },
-        {
-            id: '8', 
-            name: 'xctiva',
-            icon: 'image.png',
-            owner: true
-        },
-        {
-            id: '9', 
-            name: 'xctiva',
-            icon: 'image.png',
-            owner: true
         }
 
 ];
