@@ -1,4 +1,4 @@
-import React, { useState} from 'react';
+import React, { useState } from 'react';
 import { RectButton } from 'react-native-gesture-handler';
 import { 
     Text, 
@@ -7,6 +7,7 @@ import {
     KeyboardAvoidingView   
 } from 'react-native';
 import { Feather } from '@expo/vector-icons';
+
 
 import { theme } from '../../global/styles/theme';
 import { styles } from './styles';
@@ -24,8 +25,7 @@ import { GuildProps } from '../../components/Guild';
 
 
 
-export function AppointmentCreate(){
-
+export function AppointmentCreate(){    
     const [category, setCategory] = useState('');
     const [ openGuildsModal, setOpenGuildsModal ] = useState(false);
     const [ guild, setGuild ] =  useState<GuildProps>({} as GuildProps);

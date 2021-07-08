@@ -1,6 +1,8 @@
 import React from 'react';
 import { StatusBar } from 'react-native';
 
+import {AuthProvider } from './src/hooks/auth';
+
 import { useFonts } from 'expo-font';
 import { Inter_400Regular, Inter_500Medium } from '@expo-google-fonts/inter';
 import { Rajdhani_500Medium, Rajdhani_700Bold } from '@expo-google-fonts/rajdhani';
@@ -24,12 +26,14 @@ export default function App() {
 
   return (
     <Background>
-      <StatusBar
-        barStyle="light-content"
-        backgroundColor='transparent'
-        translucent
-      />
-      <Routes />
+        <StatusBar
+          barStyle="light-content"
+          backgroundColor='transparent'
+          translucent
+        />
+        <AuthProvider>
+          <Routes />
+        </AuthProvider>
     </Background>
   );
 
