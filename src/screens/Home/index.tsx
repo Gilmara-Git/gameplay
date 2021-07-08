@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { View, FlatList } from 'react-native';
 
 import { styles } from './styles'
@@ -12,7 +12,8 @@ import { ListHeader } from '../../components/ListHeader'
 import { Appointment } from '../../components/Appointment';
 import  { ListDivider } from '../../components/ListDivider';
 
-export function Home(){
+
+export function Home(){ 
     const [category, setCategory] = useState('');
     const navigation = useNavigation();
 
