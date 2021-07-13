@@ -42,7 +42,8 @@ type AuthProviderProps = {
 
 type AuthorizationReponse = AuthSession.AuthSessionResult & {
     params: {
-        access_token: string;
+        access_token?: string;
+        error?: string;
     }
 }
 
@@ -58,7 +59,7 @@ function AuthProvider({ children }: AuthProviderProps){
             const authUrl= `${api.defaults.baseURL}/oauth2/authorize?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}&scope=${SCOPE}`;  
             const { type, params } = await AuthSession.startAsync({ authUrl}) as AuthorizationReponse;
             
-            if(type === 'success'){
+            if(type === 'success' && !params.error){
                 api.defaults.headers.authorization = `Bearer ${params.access_token}`;
                 const userInfo = await api.get('/users/@me'); 
                 const firstName = userInfo.data.username.split(' ')[0];
