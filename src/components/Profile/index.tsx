@@ -8,7 +8,7 @@ import { useAuth } from '../../hooks/auth';
 
 export function Profile(){
     const { user } = useAuth();
-    console.log(user)
+    // console.log(user)
 
     return (
         <View style={styles.container}>
