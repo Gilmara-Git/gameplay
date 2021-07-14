@@ -24,12 +24,11 @@ import { Guilds } from  '../../components/Guilds';
 import { GuildProps } from '../../components/Guild';
 
 
-
 export function AppointmentCreate(){    
     const [category, setCategory] = useState('');
     const [ openGuildsModal, setOpenGuildsModal ] = useState(false);
     const [ guild, setGuild ] =  useState<GuildProps>({} as GuildProps);
-
+    // console.log(guild);
     
     function handleCategorySelect(categoryId: string){
         setCategory(categoryId);
@@ -82,7 +81,11 @@ export function AppointmentCreate(){
                                     <View style={styles.select}> 
                                         
                                     {                                 
-                                        guild.icon ? <GuildIcon /> :  <View style={styles.image}/>                                    
+                                        guild.icon ? <GuildIcon 
+                                                        guildId={guild.id} 
+                                                        iconId={guild.icon}
+                                                        /> 
+                                                    :  <View style={styles.image}/>                                    
                                     }
 
                                         <View style={styles.selectBody}>

@@ -11,7 +11,7 @@ export const styles =  StyleSheet.create({
         fontSize: 18, 
         fontFamily:  theme.fonts.title700,
         color: theme.colors.heading,
-        marginBottom: 12
+        marginBottom: 2
     }, 
     form:{
         paddingHorizontal: 24,
