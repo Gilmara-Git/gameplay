@@ -72,7 +72,6 @@ function AuthProvider({ children }: AuthProviderProps){
                     ...userInfo.data,
                     firstName,
                     token: params.access_token
-
                 }
                 
                 await AsyncStorage.setItem(COLLECTION_USERS, JSON.stringify(userData));              
