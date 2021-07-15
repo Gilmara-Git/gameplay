@@ -6,12 +6,12 @@ import {
     ScrollView,
     KeyboardAvoidingView   
 } from 'react-native';
+import  { useNavigation}  from '@react-navigation/native'
 
 import uuid from 'react-native-uuid';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { COLLECTION_APPOINTMENTS } from '../../configs/database';
 
-import  { useNavigation }  from '@react-navigation/native'
 
 import { Feather } from '@expo/vector-icons';
 
