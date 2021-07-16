@@ -4,7 +4,8 @@ import {
     Text, 
     View,
     ScrollView,
-    KeyboardAvoidingView   
+    KeyboardAvoidingView, 
+    Alert  
 } from 'react-native';
 import  { useNavigation}  from '@react-navigation/native'
 
@@ -69,8 +70,10 @@ export function AppointmentCreate(){
             description
         }
         const storage  = await AsyncStorage.getItem(COLLECTION_APPOINTMENTS);
-
         const appointments = storage ? JSON.parse(storage) : [];
+        if(!category){
+            Alert.alert('Por favor selecione uma categoria')
+        }
 
         await AsyncStorage.setItem(
             COLLECTION_APPOINTMENTS, 

@@ -44,8 +44,6 @@ export const styles = StyleSheet.create({
     category:{
         fontFamily: theme.fonts.text400,
         color: theme.colors.highlight,
-
-
     },
     playersInfo:{
         flexDirection: 'row',
