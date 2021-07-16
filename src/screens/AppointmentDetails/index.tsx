@@ -4,7 +4,9 @@ import {
         Text, 
         View, 
         FlatList,
-        Alert
+        Alert,
+        Share, 
+        Platform
     } from 'react-native';
 import { BorderlessButton } from 'react-native-gesture-handler'
 import { Fontisto } from '@expo/vector-icons';
@@ -46,6 +48,7 @@ export function AppointmentDetails(){
         try{
            const response =  await api.get(`/guilds/${guildSelected.guild.id}/widget.json`);
            setWidget(response.data);  
+           console.log(response.data);
              
            if(response.data.members.length === 0){
                return Alert.alert('Não há ninguém online neste servidor no momento!');
@@ -55,8 +58,19 @@ export function AppointmentDetails(){
         }finally {
             setLoading(false);
         }
-    
     }
+
+    function handleShareInvitation(){
+        const message = Platform.OS === 'ios'
+            ? `Junte-se a ${guildSelected.guild.name}`
+            : widget.instant_invite
+
+            Share.share({
+                message,
+                url: widget.instant_invite
+            })              
+    }
+
 
     useEffect(()=>{
         fetchGuildWidget()
@@ -67,7 +81,10 @@ export function AppointmentDetails(){
             <Header
                 title="Detalhes"
                 action={
-                    <BorderlessButton>
+                    guildSelected.guild.owner &&
+                    <BorderlessButton
+                        onPress={handleShareInvitation}
+                    >
                         <Fontisto
                             name="share"
                             color={theme.colors.primary}
