@@ -14,7 +14,8 @@ import { Appointment, AppointmentProps } from '../../components/Appointment';
 import  { ListDivider } from '../../components/ListDivider';
 import  { Load } from '../../components/Load';
 
-import { styles } from './styles'
+import { styles } from './styles';
+
 
 export function Home(){ 
     const [category, setCategory] = useState('');
@@ -27,7 +28,12 @@ export function Home(){
         categoryId === category ? setCategory('') :  setCategory(categoryId);
     }
 
-    function handleAppointmentDetails(guildSelected : AppointmentProps){
+  async function handleAppointmentDetails(guildSelected : AppointmentProps){
+      
+        const storage  = await AsyncStorage.getItem(COLLECTION_APPOINTMENTS);
+        const appointments = storage ? JSON.parse(storage) : [];
+   
+
         navigation.navigate('AppointmentDetails', { guildSelected } );
     }
 
@@ -37,12 +43,12 @@ export function Home(){
 
     async function loadAppointments(){
         const response = await AsyncStorage.getItem(COLLECTION_APPOINTMENTS);
-        const appointmentsStorage : AppointmentProps[] = response ? JSON.parse(response) : []; 
-
+        const appointments : AppointmentProps[] = response ? JSON.parse(response) : []; 
+        
         if(category){
-            setAppointments(appointmentsStorage.filter(item => item.category === category))
-        }else{
-            setAppointments(appointmentsStorage)
+            setAppointments(appointments.filter(item => item.category === category))
+        }else{  
+            setAppointments(appointments.filter(item => item.category !== ""))
         }
         setLoading(false);
     }
