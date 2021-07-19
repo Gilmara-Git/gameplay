@@ -43,6 +43,8 @@ export function AppointmentCreate(){
     const [description, setDescription] = useState('');
     
     const navigation = useNavigation();
+
+   console.log('linha47',day)
     
     function handleCategorySelect(categoryId: string){
         setCategory(categoryId);
@@ -61,7 +63,16 @@ export function AppointmentCreate(){
         setOpenGuildsModal(false);
     }
 
+   
     async function handleSave(){
+        
+        if(!day) return Alert.alert('Preencha o dia.');
+        if(!month) return Alert.alert('Preencha o mês.');
+        if(!hour) return Alert.alert('Preencha a hora.');
+        if(!minute) return Alert.alert('Preencha o minuto.');
+        if(!description) return Alert.alert('Preencha uma descrição.');
+       
+
         const newAppointment = {
             id: uuid.v4(),
             guild,
@@ -69,19 +80,21 @@ export function AppointmentCreate(){
             date: `${day}/${month} as ${hour}:${minute}h`,
             description
         }
-        const storage  = await AsyncStorage.getItem(COLLECTION_APPOINTMENTS);
-        const appointments = storage ? JSON.parse(storage) : [];
-        if(!category){
-            Alert.alert('Por favor selecione uma categoria')
+    
+        if(!newAppointment.category) {
+           return Alert.alert('Por favor selecione uma categoria acima!')
         }
 
+
+        const storage  = await AsyncStorage.getItem(COLLECTION_APPOINTMENTS);
+        const appointments = storage ? JSON.parse(storage) : [];
+       
         await AsyncStorage.setItem(
             COLLECTION_APPOINTMENTS, 
             JSON.stringify([...appointments, newAppointment])
             );
 
-            navigation.navigate('Home');
-        
+            navigation.navigate('Home');    
     }
     
 
@@ -152,7 +165,7 @@ export function AppointmentCreate(){
 
                                         <View style={styles.column}>
                                             <SmallInput maxLength={2}
-                                                        onChangeText={setDay}
+                                                        onChangeText={setDay}                                                                                       
                                             />
 
                                             <Text style={styles.divider}>
@@ -171,7 +184,7 @@ export function AppointmentCreate(){
                                         </Text>
 
                                         <View style={styles.column}>
-                                            <SmallInput maxLength={2}
+                                            <SmallInput maxLength={2}                                                        
                                                         onChangeText={setHour}
                                             />
 
