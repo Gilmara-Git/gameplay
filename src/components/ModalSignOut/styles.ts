@@ -9,7 +9,7 @@ export const styles = StyleSheet.create({
  
   },  
   container: { 
-    height: 170,  
+    height: 152,  
     marginTop:26,
   },
   title:{
