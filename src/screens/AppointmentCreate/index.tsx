@@ -42,9 +42,7 @@ export function AppointmentCreate(){
     const [minute, setMinute] = useState('');
     const [description, setDescription] = useState('');
     
-    const navigation = useNavigation();
-
-   console.log('linha47',day)
+    const navigation = useNavigation(); 
     
     function handleCategorySelect(categoryId: string){
         setCategory(categoryId);

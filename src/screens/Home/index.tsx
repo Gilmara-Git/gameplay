@@ -13,6 +13,9 @@ import { ListHeader } from '../../components/ListHeader'
 import { Appointment, AppointmentProps } from '../../components/Appointment';
 import  { ListDivider } from '../../components/ListDivider';
 import  { Load } from '../../components/Load';
+import { ModalSignOut } from '../../components/ModalSignOut';
+import { ButtonNo } from '../../components/ButtonNo';
+import { ButtonYes } from '../../components/ButtonYes';
 
 import { styles } from './styles';
 
@@ -95,6 +98,20 @@ export function Home(){
                             />
                     </>
                }
+               <ModalSignOut
+                    visible={true}
+                    title="Deseja sair do Game"
+                    titleComplement="Play"
+               >
+                  
+                        <ButtonNo                            
+                            title="Não"
+                        />
+                        <ButtonYes
+                            title="Sim"
+                        />
+                 
+               </ModalSignOut>
         </Background>
     );
 }
