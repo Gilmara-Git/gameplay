@@ -20,7 +20,7 @@ export default function App() {
     Rajdhani_500Medium,
     Rajdhani_700Bold
   })
-  console.log('linha 16', fontsLoaded);
+  console.log('linha 16 na App- Fontes carregaram ?', fontsLoaded);
 
   if (!fontsLoaded) {
     return <AppLoading />

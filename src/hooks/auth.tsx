@@ -87,6 +87,7 @@ function AuthProvider({ children }: AuthProviderProps){
 
     async function signOut(){
         setUser({} as User);
+        console.log('user na signOut', user)
         await AsyncStorage.removeItem(COLLECTION_USERS);
     }
     async function loadUserStorageData() {
