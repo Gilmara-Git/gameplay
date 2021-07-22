@@ -1,5 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import { View, FlatList } from 'react-native';
+import { RectButton } from 'react-native-gesture-handler'
 
 import { useNavigation, useFocusEffect  } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -16,6 +17,7 @@ import  { Load } from '../../components/Load';
 import { ModalSignOut } from '../../components/ModalSignOut';
 import { ButtonNo } from '../../components/ButtonNo';
 import { ButtonYes } from '../../components/ButtonYes';
+import { useAuth } from '../../hooks/auth';
 
 import { styles } from './styles';
 
@@ -24,7 +26,9 @@ export function Home(){
     const [category, setCategory] = useState('');
     const [appointments, setAppointments ] = useState<AppointmentProps[]>([]);
     const [ loading, setLoading ] = useState(true);
+    const [ openModal, setOpenModal ] = useState(false);
 
+    const { signOut } = useAuth();
     const navigation = useNavigation();
 
     function handleCategorySelect(categoryId: string){
@@ -32,11 +36,7 @@ export function Home(){
     }
 
   async function handleAppointmentDetails(guildSelected : AppointmentProps){
-      
-        const storage  = await AsyncStorage.getItem(COLLECTION_APPOINTMENTS);
-        const appointments = storage ? JSON.parse(storage) : [];
-   
-
+  
         navigation.navigate('AppointmentDetails', { guildSelected } );
     }
 
@@ -46,14 +46,26 @@ export function Home(){
 
     async function loadAppointments(){
         const response = await AsyncStorage.getItem(COLLECTION_APPOINTMENTS);
-        const appointments : AppointmentProps[] = response ? JSON.parse(response) : []; 
+        const storage : AppointmentProps[] = response ? JSON.parse(response) : []; 
         
         if(category){
-            setAppointments(appointments.filter(item => item.category === category))
+            setAppointments(storage.filter(item => item.category === category))
         }else{  
-            setAppointments(appointments.filter(item => item.category !== ""))
+            setAppointments(storage.filter(item => item.category !== ""))
         }
         setLoading(false);
+    }
+
+    function handleCloseModalSignOut(){
+        setOpenModal(false);
+    }
+
+    function handleOpenModalSignOut(){
+        setOpenModal(true);
+    }
+
+    function handleSignOut(){
+        signOut();
     }
 
     useFocusEffect(useCallback(()=>{
@@ -63,7 +75,11 @@ export function Home(){
     return (
         <Background>
             <View style={styles.header}>
-                <Profile/>
+                <RectButton
+                    onPress={handleOpenModalSignOut}
+                >
+                    <Profile/>
+                </RectButton>
                 
                 <ButtonAdd
                      onPress={handleAppointmentCreate} 
@@ -99,15 +115,17 @@ export function Home(){
                     </>
                }
                <ModalSignOut
-                    visible={true}
+                    visible={openModal}
                     title="Deseja sair do Game"
                     titleComplement="Play"
                >
                   
-                        <ButtonNo                            
+                        <ButtonNo
+                            onPress={handleCloseModalSignOut}                            
                             title="Não"
                         />
                         <ButtonYes
+                            onPress={handleSignOut}
                             title="Sim"
                         />
                  
